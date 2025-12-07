@@ -100,6 +100,17 @@ app.post("/update-cookies", (req, res) => {
             };
         }
 
+        // Fix SameSite attribute for Playwright
+        if (data.cookies) {
+            data.cookies.forEach(cookie => {
+                if (cookie.sameSite === 'unspecified' || cookie.sameSite === 'no_restriction') {
+                    cookie.sameSite = 'None';
+                } else if (cookie.sameSite) {
+                    cookie.sameSite = cookie.sameSite.charAt(0).toUpperCase() + cookie.sameSite.slice(1).toLowerCase();
+                }
+            });
+        }
+
         fs.writeFileSync("gmail_state.json", JSON.stringify(data, null, 2));
         console.log("Cookies updated successfully via API.");
         res.send("Cookies updated successfully. You can now run the automation.");
