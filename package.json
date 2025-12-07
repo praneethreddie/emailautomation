@@ -1,0 +1,12 @@
+{
+  "name": "gmail-automation",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "./start.sh"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "playwright": "^1.43.0"
+  }
+}
