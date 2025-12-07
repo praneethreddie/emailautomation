@@ -25,10 +25,10 @@ function runAutomation(res = null) {
     exec("node gmail_auto.js", (error, stdout, stderr) => {
         if (error) {
             console.error("Error running automation:", error);
-            if (res) return res.status(500).send("Automation failed. Check logs.");
+            if (res) return res.status(500).send(`Automation failed.<br><br><b>Error:</b> ${error.message}<br><br><b>Stderr:</b><pre>${stderr}</pre>`);
         }
         console.log(stdout);
-        if (res) res.send("Automation executed successfully.");
+        if (res) res.send("Automation executed successfully.<br><br><b>Output:</b><pre>" + stdout + "</pre>");
     });
 }
 
