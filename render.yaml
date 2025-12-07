@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: gmail-automation
+    env: docker
+    plan: free
+    branch: main
+    repo: https://github.com/praneethreddie/emailautomation
+    region: oregon
+    healthCheckPath: /
